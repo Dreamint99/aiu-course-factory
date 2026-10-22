@@ -1,6 +1,7 @@
 # AI University course factory — makes the Japanese course (30 lessons) unattended, even when the owner's PC is off.
 # Every hour (and on demand) it picks up to `max` unfinished lessons: AI spec → checks → voices → free chunked render on the
-# public render repo → MP4 uploaded to the private release "japanese-course" here; specs and progress are committed back.
+# public render repo → MP4 uploaded to the release "japanese-course" of the PRIVATE repo Dreamint99/aiu-course-videos;
+# specs and progress are committed back here (this repo is public so Actions minutes are free; secrets stay hidden).
 # Secrets: OPENROUTER_API_KEY, ELEVENLABS_API_KEY, ANTHROPIC_API_KEY (optional), RENDER_TOKEN (GitHub token with repo+workflow).
 name: japanese-course
 on:
@@ -49,5 +50,5 @@ jobs:
           GH_TOKEN: "${{ secrets.RENDER_TOKEN }}"
           RENDER_REPO: "${{ runner.temp }}/aiu-render"
           CLAUDE_LEDGER: "src/japanese/claude_spend.json"
-          FACTORY_REPO: "${{ github.repository }}"
+          FACTORY_REPO: "Dreamint99/aiu-course-videos"  # videos stay private even though this repo is public
         run: python scripts/japanese_factory.py --max "${{ inputs.max || '4' }}" --only "${{ inputs.only }}" --upload
