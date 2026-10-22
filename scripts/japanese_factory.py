@@ -36,12 +36,18 @@ def save(st):
 
 
 def commit(msg):
+    """Commit the lesson specs only (state = the release; factory.json / claude_spend.json conflict between parallel runs and
+    made whole commits — specs included — fail). Retries pull --rebase + push."""
     if os.environ.get("CI") != "true":
         return
-    paths = [p for p in ("src/japanese/specs", "src/japanese/factory.json", "src/japanese/claude_spend.json") if (ROOT / p).exists()]
-    run("git", "add", *paths, check=False)  # a missing path would make git add stage nothing at all
-    run("git", "-c", "user.email=factory@aiuniversitybd.com", "-c", "user.name=AIU course factory", "commit", "-q", "-m", msg, check=False)
-    run("git", "pull", "-q", "--rebase", check=False); run("git", "push", "-q", check=False)
+    run("git", "add", "src/japanese/specs", check=False)
+    run("git", "-c", "user.email=factory@aiuniversitybd.com", "-c", "user.name=AIU course factory", "commit", "-q", "-m", msg, "--", "src/japanese/specs", check=False)
+    for _ in range(5):
+        run("git", "checkout", "--", "src/japanese/factory.json", "src/japanese/claude_spend.json", check=False)
+        run("git", "pull", "-q", "--rebase", "--autostash", check=False)
+        if run("git", "push", "-q", check=False).returncode == 0:
+            return
+        run("git", "rebase", "--abort", check=False); time.sleep(5)
 
 
 def main():
@@ -53,7 +59,8 @@ def main():
         repo = os.environ.get("FACTORY_REPO", "Dreamint99/aiu-course-videos")
         r = run("gh", "release", "view", "japanese-course", "-R", repo, "--json", "assets", "-q", ".assets[].name", check=False)
         have = {int(m) for m in re.findall(r"jpw-(\d+)\.mp4", r.stdout or "")}
-        have = {n for n in have if (ROOT / f"src/japanese/specs/jpw-{n:02d}.json").exists()}  # a video without its spec (lost in a parallel run) is made again
+        specs = {int(m) for m in re.findall(r"jpw-(\d+)\.json", r.stdout or "")}
+        have = {n for n in have if n in specs or (ROOT / f"src/japanese/specs/jpw-{n:02d}.json").exists()}  # a video without its spec (lost in a parallel run) is made again
         st["done"] = sorted((set(st["done"]) & have) | have)
     todo = [int(x) for x in a.only.split(",") if x and int(x) not in st["done"]] or ([] if a.only else [n for n in range(1, TOTAL + 1) if n not in st["done"]])
     todo = [n for n in todo if st["failed"].get(str(n), 0) < 3][: a.max]
@@ -73,6 +80,7 @@ def main():
                 if run("gh", "release", "view", "japanese-course", "-R", repo, check=False).returncode:
                     run("gh", "release", "create", "japanese-course", "-R", repo, "-t", "Japanese course videos", "-n", "Finished lesson videos (private).")
                 run("gh", "release", "upload", "japanese-course", str(mp4), "-R", repo, "--clobber")
+                run("gh", "release", "upload", "japanese-course", str(ROOT / f"src/japanese/specs/{lid}.json"), "-R", repo, "--clobber")  # the spec travels with its video (page text = what the video says)
             st["done"] = sorted(set(st["done"]) | {n}); st["failed"].pop(str(n), None)
             print(f"✓ {lid} in {int(time.time() - t0)}s", flush=True)
         except Exception as e:  # noqa: BLE001
