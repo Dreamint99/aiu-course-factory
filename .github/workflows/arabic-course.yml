@@ -12,7 +12,7 @@ on:
       max: { description: "lessons this run", default: "4" }
       only: { description: "comma list of lesson numbers (optional)", default: "" }
 
-concurrency: { group: arabic-course, cancel-in-progress: false }  # separate from japanese-course
+concurrency: { group: "arabic-course-${{ inputs.only }}", cancel-in-progress: false }  # parallel runs with different lesson lists
 permissions: { contents: write }
 
 jobs:
