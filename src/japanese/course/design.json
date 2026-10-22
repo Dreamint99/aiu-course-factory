@@ -1,0 +1,530 @@
+{
+  "course_meta": {
+    "title": "Japanese for Bangladeshi Workers: Zero to Practical Beginner Japanese + JLPT N5 Preparation + JFT-Basic Foundation",
+    "audience": "Bangla-speaking complete beginners in Bangladesh who are preparing for work in Japan. Most have little free time and study on low-end Android phones with limited mobile data.",
+    "teacher_voice": "Tanvir explains in Bangla. All Japanese lines use native Japanese voices.",
+    "status": "Draft for production. Every item marked VERIFY is a hard publication blocker in the CMS. It must be confirmed against a current primary source, or removed or labelled, before publication.",
+    "last_reviewed": "DATE-STAMP REQUIRED AT PUBLICATION"
+  },
+  "course_promise": {
+    "promises_separated": {
+      "track_core": "Practical survival and workplace Japanese for daily life and genba (on-site) work.",
+      "track_jlpt_n5": "Preparation for JLPT N5, backed by a published grammar/function matrix (see coverage_matrix). JLPT N5 is Japanese-only and has no Bangla support. Any area the matrix shows as not yet covered is listed openly and is not claimed.",
+      "track_jft_basic": "A foundation and style practice for JFT-Basic. Reaching A2 readiness usually needs study beyond the 30 core lessons, through the exam-extension track. Readiness is judged by scored mastery on the practice mocks, not by finishing videos. The course is not marketed as 'zero to JFT-Basic' unless calibrated mock evidence shows realistic A2 readiness."
+    },
+    "disclaimers": [
+      "Japan's general SSW language benchmark is commonly JFT-Basic or JLPT N4 or higher, subject to field-specific rules. VERIFY current rules with Japan's Immigration Services Agency and the relevant field authority.",
+      "JLPT N5 alone may not meet SSW requirements.",
+      "The Bangladesh Embassy statement about N5 or 160 training hours may describe a Bangladesh-side process. It is not presented as the universal Japanese immigration requirement. Completing this course does not by itself satisfy any 160-hour training option.",
+      "Passing this course does not guarantee exam success, SSW eligibility, employment, a visa, or migration.",
+      "Language lessons do not replace workplace safety training, medical advice, legal advice, tenancy advice, or halal certification."
+    ],
+    "no_pass_guarantee_policy": "No pass guarantee or money-back-on-fail is offered, because no course can honestly promise exam results. Instead, learners who complete all missions and both final mocks keep 12 months of free re-access to the course and mock bank. Each lesson is mapped to the can-do statements it targets, so learners can see their path."
+  },
+  "course_outcomes": [
+    "Introduce yourself to a supervisor using a polite self-introduction and family-name + さん address. Use context-appropriate workplace greetings: おはようございます on arrival, おつかれさまです where it is used locally, and おさきにしつれいします when leaving before others.",
+    "Understand a short shift instruction (time, place, task) after no more than two plays. This includes common casual or clipped commands such as ～して, ～しないで, だめ, and あぶない, while always answering politely.",
+    "Read all hiragana and katakana, plus about 80–100 kanji. This target is an internal estimate, not an official list.",
+    "Read common workplace and safety signs, food labels (豚肉/鶏肉/牛肉), and the 原材料名 ingredients box.",
+    "Complete a basic form: write your name in katakana using your registered spelling, fill in the フリガナ box correctly, and add address, date, and phone number.",
+    "Handle a konbini or shop transaction, including common clerk questions. Ask whether pork or alcohol is included, while understanding that ingredient checks do not certify halal status.",
+    "Report a problem using Ho-Ren-So as a common workplace framework, call in sick before a shift, and sort trash correctly.",
+    "Reach the published internal practice threshold on separate full-length JFT-Basic-style and JLPT N5-style practice mocks. Scores are reported as raw percent and section mastery only. They are practice estimates, not official scores."
+  ],
+  "scope_and_hours": {
+    "lesson_format": "The lesson is the single machine-checkable unit. Each lesson has one main video of 5–10 minutes that contains the full mandatory scene flow. It also has 4–6 micro-units, each with one objective. Micro-units are LMS chapters and activities built from reusable audio, widgets, and worksheets, about 7–9 minutes each and totalling 35–45 minutes. They are not separate lesson videos and are not checked as standalone lessons. Guided content per lesson is therefore about 40–55 minutes.",
+    "self_study": "About 2–3 hours of practice per lesson. The estimated core total is about 80–118 hours (30 × 40–55 minutes guided ≈ 20–27.5 hours, plus 30 × 2–3 hours practice = 60–90 hours). Third-party estimates for N5 readiness vary, so all figures are labelled as estimates. JFT A2 readiness may require additional hours in the exam-extension track.",
+    "targets_estimates": "About 700–800 vocabulary items and about 80–100 kanji. These are third-party-informed estimates. No official N5 vocabulary or kanji list is claimed. A versioned vocabulary and kanji inventory records each item's first teaching point, the readings taught in words, its contexts, later recalls, and its assessment items.",
+    "diagnostic_prerequisites": "An ungraded entry diagnostic checks Bangla literacy, basic phone use, and any prior kana knowledge. Learners with prior kana can skip lessons 1–5 after passing a placement check on unseen decoding items."
+  },
+  "lesson_sequence": [
+    {
+      "n": 1,
+      "title": "Hiragana あ–こ + first workplace greetings",
+      "can_do": "Read 10 hiragana and use 3 workplace greetings by situation: おはようございます, おつかれさまです, and おさきにしつれいします.",
+      "mission": "Voice recording of greetings plus a tracing-pad writing sample.",
+      "transfer_task": "A simulated shift-day picture sequence: choose and say the right greeting for each scene. A tap-only option is available."
+    },
+    {
+      "n": 2,
+      "title": "Hiragana さ–と + self-introduction",
+      "can_do": "Give a 3-sentence self-introduction.",
+      "mission": "Recorded self-introduction.",
+      "transfer_task": "Introduce yourself to a family member or friend in Japanese and note one point to improve. A typed option is available."
+    },
+    {
+      "n": 3,
+      "title": "Hiragana な–ほ + numbers 1–10",
+      "can_do": "Say and read numbers 1–10.",
+      "mission": "Read your phone number aloud (recording).",
+      "transfer_task": "Read 3 unseen phone numbers from a worksheet and write them in digits."
+    },
+    {
+      "n": 4,
+      "title": "Hiragana ま–ん + dakuten/handakuten; clean tap ら行, final ん, つ vs す",
+      "can_do": "Read voiced kana, say ら行 with a light tap, end words in ん without an added vowel, and distinguish つ/す when listening.",
+      "mission": "Minimal-pair listening response plus a recording.",
+      "transfer_task": "Decode 10 unseen words such as にほん and でんわ, then say them with a clean final ん."
+    },
+    {
+      "n": 5,
+      "title": "Small ゃゅょ, っ, long vowels; mora timing; ざ vs じゃ + cumulative review 1",
+      "can_do": "Hear and say おばさん vs おばあさん, きって vs きて, and ざ vs じゃ using picture cues.",
+      "mission": "Mora-timing recording with self-comparison against model audio.",
+      "transfer_task": "Picture-matching on unseen near-minimal pairs. Includes the cumulative-review micro-unit."
+    },
+    {
+      "n": 6,
+      "title": "Katakana I (ア–ノ) + food loanwords",
+      "can_do": "Read the first 25 katakana in food words.",
+      "mission": "Photograph or transcribe 5 katakana food words (simulated menu available).",
+      "transfer_task": "Read an unseen simulated menu and order 2 items aloud or by tapping."
+    },
+    {
+      "n": 7,
+      "title": "Katakana II (ハ–ン, dakuten, ー, small and extended forms such as ティ/ファ) + konbini items",
+      "can_do": "Read konbini product names, including the long-vowel mark.",
+      "mission": "Typed shopping list in katakana.",
+      "transfer_task": "Find 5 named items on an unseen simulated konbini shelf image."
+    },
+    {
+      "n": 8,
+      "title": "Numbers to 10,000 + prices + register questions",
+      "can_do": "Understand a price, pay at a register, and respond to レジぶくろはごりようですか, あたためますか, and ポイントカードはおもちですか with はい/だいじょうぶです.",
+      "mission": "Recorded register roleplay.",
+      "transfer_task": "A simulated register with rapid clerk questions in random order: respond correctly to each."
+    },
+    {
+      "n": 9,
+      "title": "Time, days, shift schedules",
+      "can_do": "Read a weekly shift table.",
+      "mission": "Interpret a shift schedule worksheet.",
+      "transfer_task": "Interpret a new schedule and send a correct confirmation message (e.g., げつようび、8じですね。わかりました。)."
+    },
+    {
+      "n": 10,
+      "title": "XはYです; questions (か/なに/だれ/どこ); の possession; names and さん (no あなた) + cumulative review 2",
+      "can_do": "Identify people politely by family-name + さん and by role (せんぱい/しゅにん/てんちょう), and ask simple questions.",
+      "mission": "Recorded introduction of a coworker.",
+      "transfer_task": "Ask and answer 3 questions about an unseen staff photo board."
+    },
+    {
+      "n": 11,
+      "title": "Kanji set 1 (一二三 日月 人 山 川) with visual stories, read in words",
+      "can_do": "Read 10 kanji in dates and signs, e.g., 三月, 日曜日, 入口.",
+      "mission": "Word-recognition task on dates and signs (writing is optional practice).",
+      "transfer_task": "Read the dates on an unseen calendar and sign set."
+    },
+    {
+      "n": 12,
+      "title": "Verbs: ます/ません; daily routine; frequency (まいにち/よく/ときどき/あまり～ません)",
+      "can_do": "Describe your daily routine and how often you do things.",
+      "mission": "Voice diary entry.",
+      "transfer_task": "Answer an unseen listening clip about another worker's routine."
+    },
+    {
+      "n": 13,
+      "title": "Particles を/に/で/へ/と/も/から/まで + Bangla postposition bridge",
+      "can_do": "Build place/action sentences.",
+      "mission": "Typed sentences about your workplace.",
+      "transfer_task": "Fill particles in an unseen short workplace notice."
+    },
+    {
+      "n": 14,
+      "title": "Past ました/ませんでした; まえに/あとで; saying what happened",
+      "can_do": "Report yesterday's work in order.",
+      "mission": "Recorded report.",
+      "transfer_task": "Write an end-of-shift report from a picture sequence."
+    },
+    {
+      "n": 15,
+      "title": "い/な adjectives incl. negative and past forms + cumulative review 3",
+      "can_do": "Describe objects and conditions now and in the past.",
+      "mission": "Describe 3 photos (recording).",
+      "transfer_task": "Describe an unseen room photo. A typed option is available."
+    },
+    {
+      "n": 16,
+      "title": "あります/います; location; counters (つ/こ/にん/まい/ほん)",
+      "can_do": "Ask where things are and how many there are.",
+      "mission": "Locate items on a floor-plan worksheet.",
+      "transfer_task": "Count and locate items in an unseen warehouse picture."
+    },
+    {
+      "n": 17,
+      "title": "Food labels and pork/alcohol questions",
+      "can_do": "Read 豚/豚肉/鶏肉/牛肉, ラード, ゼラチン, みりん, and アルコール in the 原材料名 box. Ask in chunks: ぶたにく？ → アルコール？ → ぶたにくがはいっていますか / アルコールがはいっていますか.",
+      "mission": "Label-reading task on a pictured label (豚肉 circled in red, bottle icon for alcohol) plus a recorded question.",
+      "transfer_task": "Check 3 unseen simulated konbini labels for flagged ingredients and decide when to look for verified certification or manufacturer information."
+    },
+    {
+      "n": 18,
+      "title": "てください requests",
+      "can_do": "Understand and make polite requests.",
+      "mission": "Recorded request roleplay.",
+      "transfer_task": "Respond to 5 unseen spoken requests by acting them out or tapping."
+    },
+    {
+      "n": 19,
+      "title": "Understanding workplace instructions + genba listening survival",
+      "can_do": "Follow a short instruction after no more than 2 plays, including casual forms (～して, ～しないで, ～やっといて, だめ). Answer politely (はい、わかりました / すみません).",
+      "mission": "Listening response worksheet.",
+      "transfer_task": "Unseen mixed polite and casual instruction clips: complete each task and give the polite reply."
+    },
+    {
+      "n": 20,
+      "title": "Ho-Ren-So: reporting trouble + emergency words + cumulative review 4",
+      "can_do": "First use the panic version (すみません！きかい！ plus pointing), then the full sentence 「すみません、きかいがとまりました」. Use emergency words (あぶない！, とめて！, たすけて！) and answer with しょうちしました/わかりました.",
+      "mission": "Recorded trouble report.",
+      "transfer_task": "A simulated trouble scene: report it within a time limit at the panic level or full level."
+    },
+    {
+      "n": 21,
+      "title": "Calling in sick or late before a shift; reasons with から",
+      "can_do": "Phone the workplace before the shift starts and give a reason (ねつがありますから…). Send a message only as a follow-up or where your company's rule allows it.",
+      "mission": "Recorded call plus typed follow-up message.",
+      "transfer_task": "Choose the right action in 3 unseen scenarios (call, message after call, or follow the company app rule)."
+    },
+    {
+      "n": 22,
+      "title": "Trash sorting and neighbours",
+      "can_do": "Sort もえるごみ/もえないごみ/しげんごみ using a schedule.",
+      "mission": "Sorting quiz on a sample local trash calendar. Rules vary by municipality.",
+      "transfer_task": "Use a different unseen municipal calendar to decide what goes out on a given day."
+    },
+    {
+      "n": 23,
+      "title": "Trains and signs",
+      "can_do": "Read station signs and buy a ticket.",
+      "mission": "Route-planning worksheet.",
+      "transfer_task": "Plan an unseen route on a simulated map and ticket machine."
+    },
+    {
+      "n": 24,
+      "title": "Clinic and symptoms",
+      "can_do": "Explain basic symptoms and recognise emergency number 119.",
+      "mission": "Recorded clinic roleplay.",
+      "transfer_task": "Fill a simulated clinic intake sheet. Note: this does not replace medical advice."
+    },
+    {
+      "n": 25,
+      "title": "Forms, フリガナ, and your name in katakana + cumulative review 5",
+      "can_do": "Complete a basic form using your registered katakana name and the フリガナ box.",
+      "mission": "Completed form.",
+      "transfer_task": "Complete 2 different unseen form layouts (bank-style and city-hall-style) with consistent spelling."
+    },
+    {
+      "n": 26,
+      "title": "ています, てもいいですか, てはいけません; safety rules; casual prohibitions",
+      "can_do": "Ask permission and understand prohibitions, safety signs, and casual warnings (～しないで, だめ, あぶない).",
+      "mission": "Safety-sign reading plus a recorded permission request.",
+      "transfer_task": "An unseen site-sign walk-through: say what is allowed and what is forbidden. Note: always follow site training and signage."
+    },
+    {
+      "n": 27,
+      "title": "Invitations (ませんか/ましょう); preferences (すき/～たい); comparison (～より～のほうが)",
+      "can_do": "Accept or decline a coworker's invitation politely and state preferences.",
+      "mission": "Recorded roleplay.",
+      "transfer_task": "Reply by message to an unseen invitation, giving a preference."
+    },
+    {
+      "n": 28,
+      "title": "Housing and landlord basics",
+      "can_do": "Report a housing problem and understand basic rules.",
+      "mission": "Typed message to a landlord.",
+      "transfer_task": "Read an unseen house-rules notice and answer 3 questions. Note: this does not replace tenancy advice."
+    },
+    {
+      "n": 29,
+      "title": "Cumulative review 6 + test strategy",
+      "can_do": "Apply JFT-style and JLPT-style timing strategies on unseen items.",
+      "mission": "Timed section practice.",
+      "transfer_task": "Complete one unseen timed section and review it against your error log."
+    },
+    {
+      "n": 30,
+      "title": "Final integration: first day at work",
+      "can_do": "Complete a full first-day scenario, including arrival greetings, instructions, a trouble report, and leaving with おさきにしつれいします / responding to おつかれさまでした.",
+      "mission": "Recorded final roleplay (required for the certificate).",
+      "transfer_task": "An unseen first-day scenario with randomised events."
+    }
+  ],
+  "lesson_architecture": {
+    "unit_definition": "One lesson = one main video (5–10 minutes, full mandatory flow) + 4–6 micro-unit LMS chapters. lesson_check.py validates the lesson package, not each micro-unit as a lesson.",
+    "mandatory_scene_list_per_lesson": [
+      "hook",
+      "title (one measurable can-do)",
+      "recall (from lesson 2; includes a hold gap before answers appear)",
+      "learn/grammar",
+      "secret (structured source or reason field)",
+      "speak (with mic gap; tap alternative)",
+      "fix (explanation + explicit thinking hold + retry)",
+      "context switch",
+      "roleplay (pass 1 subtitle-first, pass 2 with learner gaps)",
+      "quiz x3+ as separate objects with countdown, hold, answer, feedback, and XP; the last is flagged boss",
+      "mission (submitted output + transfer task + offline/no-mic alternative + rubric)",
+      "reward (XP tied to demonstrated work, recap, before/after evidence, streak update, next-lesson teaser)"
+    ],
+    "machine_check": "lesson_check.py validates scene order and presence, at least 3 separate quiz objects with all required fields, the boss flag on the last quiz, a populated secret source/reason field, hold fields on recall and fix, two-pass roleplay, mission transfer and rubric fields, all reward fields, and recall from lesson 2 onward.",
+    "full_spec_requirement": "A complete scene-level spec is written and checked for all 30 lessons before approval. For each lesson, the checker output and human-review status are stored for Japanese accuracy, cultural nuance, mobile layout, audio, and assessment validity.",
+    "sample_full_spec_lesson_1": {
+      "objective": "Read あいうえおかきくけこ and use おはようございます, おつかれさまです, and おさきにしつれいします by situation.",
+      "scenes": [
+        {
+          "type": "hook",
+          "content": "A factory at the end of a shift. A new Bangladeshi worker says さようなら to his supervisor. It is understood, but it sounds a little unusual at work. Tanvir: 'Today you'll learn what coworkers usually say.'"
+        },
+        {
+          "type": "title",
+          "content": "Can-do: read 10 hiragana and choose and say 3 workplace greetings by situation."
+        },
+        {
+          "type": "learn",
+          "content": "The あ–こ row with mnemonics, stroke animation, and native audio. Romaji is shown small and fades out by lesson 5. Greetings by situation: arriving in the morning → おはようございます. Passing colleagues during the day, where used locally → おつかれさまです. Leaving before others → おさきにしつれいします, with the likely reply おつかれさまでした."
+        },
+        {
+          "type": "secret",
+          "content": "Safe default with senior people such as the しゃちょう: おはようございます on arrival and おさきにしつれいします when leaving. Many workplaces also use おつかれさまです with superiors. If unsure, copy what your coworkers say. Avoid ごくろうさま toward superiors.",
+          "source_or_reason": "Reasoned from common workplace usage. Usage varies by workplace. Requires native-reviewer approval for each scenario.",
+          "status": "reasoned"
+        },
+        {
+          "type": "speak",
+          "content": "Repeat each greeting with a 3-second mic gap. Tap-to-hear model audio and self-compare. A tap-only alternative is available."
+        },
+        {
+          "type": "fix",
+          "content": "Common mix-up: using こんにちは or さようなら at the start or end of a shift. These are not wrong, but they are less usual at work. Prompt: 'Which greeting fits leaving before your senpai?'",
+          "thinking_hold_seconds": 4,
+          "explanation": "おさきにしつれいします is the usual phrase when leaving before others.",
+          "retry": true
+        },
+        {
+          "type": "context",
+          "content": "Morning arrival vs passing a senpai in the hallway vs leaving at the end of a shift."
+        },
+        {
+          "type": "roleplay",
+          "pass_1": "Subtitle-first: watch the full exchange (arrive and greet the しゅにん; leave with おさきにしつれいします; hear おつかれさまでした).",
+          "pass_2": "The learner's lines are removed. Speak or tap in the gaps, then compare with the model."
+        },
+        {
+          "type": "quiz",
+          "label": "Q1",
+          "task": "Kana recognition",
+          "countdown_seconds": 20,
+          "hold_seconds": 2,
+          "answer": "Correct kana revealed",
+          "feedback": "Mnemonic replay on error",
+          "xp": 10,
+          "boss": false
+        },
+        {
+          "type": "quiz",
+          "label": "Q2",
+          "task": "Greeting choice by situation picture",
+          "countdown_seconds": 15,
+          "hold_seconds": 2,
+          "answer": "Correct greeting revealed with audio",
+          "feedback": "Short situational reason",
+          "xp": 10,
+          "boss": false
+        },
+        {
+          "type": "quiz",
+          "label": "Q3",
+          "task": "BOSS: listening + kana mix on unseen items, 2 plays max",
+          "countdown_seconds": 30,
+          "hold_seconds": 3,
+          "answer": "Answers revealed with audio",
+          "feedback": "Targeted review suggestion",
+          "xp": 30,
+          "boss": true
+        },
+        {
+          "type": "mission",
+          "output": "Upload a voice recording of the 3 greetings and a tracing-pad sample of あ–こ.",
+          "transfer_task": "A simulated shift-day picture sequence: choose and say the right greeting.",
+          "offline_no_mic_alternative": "Tap-to-select version plus a printable worksheet.",
+          "rubric": "Correct greeting for each situation; all target words present; kana decoded on unseen items."
+        },
+        {
+          "type": "reward",
+          "xp_rule": "XP awarded only for completed quizzes and mission evidence.",
+          "recap": "10 kana + 3 greetings by situation.",
+          "before_after": "Your first attempt vs your final recording, side by side.",
+          "streak_update": true,
+          "badge": "First Shift",
+          "next_teaser": "Next: さ–と and your first self-introduction."
+        }
+      ]
+    }
+  },
+  "kana_kanji_policy": {
+    "hiragana": "Lessons 1–5, using mnemonics, the existing kids' tracing-pad widget, and the pronunciation lab for every character.",
+    "katakana": "Lessons 6–7, then reinforced through loanwords and katakana name writing in lesson 25.",
+    "mastery_map": "A per-lesson table lists every basic kana, voiced/semi-voiced form, contracted sound, long-vowel convention, and small っ occurrence. L1 あ–こ; L2 さ–と; L3 な–ほ; L4 ま–ん, dakuten/handakuten; L5 ゃゅょ contractions, っ, long vowels; L6 ア–ノ; L7 ハ–ン, katakana dakuten, ー, small and extended forms. Mastery is measured by recognition and decoding thresholds on unseen items, not tracing alone. If pilot error rates show overload, dakuten or pronunciation contrasts are moved.",
+    "kanji": "Introduced from lesson 11 in small sets (about 5–10 per lesson, lessons 11–29) with visual stories, prioritising signs, food labels (including 豚 alone and 原材料名), dates, and safety. Kanji are taught and tested mainly as word recognition. Writing is optional practice, not an isolated target.",
+    "inventory": "A versioned vocabulary and kanji inventory records first teaching point, readings in words, contexts, recurrences, and assessment items. It is checked by script.",
+    "romaji": "Limited support only, phased out by lesson 5.",
+    "pitch": "Pitch and pronunciation guidance is marked conservatively. No overclaiming."
+  },
+  "politeness_and_culture": {
+    "standard": "Neutral polite です/ます is the default for production. Casual, overly formal, and gendered speech is labelled whenever it appears. Learners are trained to understand common casual or clipped supervisor speech while answering politely.",
+    "workplace_rules": [
+      "Greetings are taught as context-sensitive preferences, not universal right/wrong rules. Arrival: おはようございます. General workplace acknowledgement, where used locally: おつかれさまです. Leaving before others: おさきにしつれいします, with the likely reply おつかれさまでした. こんにちは and さようなら are understandable but less usual at work. Each scenario is native-reviewer approved.",
+      "Avoid あなた. Use family-name + さん or role titles.",
+      "Teach すみません as a multipurpose survival word.",
+      "Teach しょうちしました/わかりました for replying to supervisors. Avoid casual わかった with supervisors.",
+      "Genba listening survival: understand ～して, ～しないで, ～やっといて, だめ, and あぶない, and answer with はい、わかりました / すみません.",
+      "Ho-Ren-So is taught as a common workplace communication framework, not a universal rule. Report trouble immediately; saying something, even broken, is better than silence.",
+      "When sick or late, phone the workplace before the shift. Do not rely only on a LINE or SMS message unless your company specifically permits it.",
+      "Follow site training and signage at all times. Language lessons do not replace safety, medical, legal, or tenancy advice."
+    ],
+    "caveat": "No phrase is claimed to suit every workplace. Avoid anime stereotypes."
+  },
+  "bangla_bridges": {
+    "policy": "Use only defensible bridges. Similarities are always presented as partial, and the differences are explained alongside them. Each bridge is reviewed by a qualified Japanese instructor and a Bangla linguist before use.",
+    "approved_candidates": [
+      {
+        "bridge": "Verb-final order: আমি ভাত খাই ↔ わたしはごはんをたべます",
+        "caveat": "Both languages often place the verb late. This is a partial similarity only. Particles and topic marking have no exact Bangla equivalent and are taught separately."
+      },
+      {
+        "bridge": "Postpositions: Bangla -কে/-তে/-এর come after the noun, as Japanese particles do (ঢাকাতে ↔ ダッカで/に, আমার ↔ わたしの)",
+        "caveat": "The functions do not map one-to-one. で vs に must be taught separately."
+      },
+      {
+        "bridge": "Reduplicated sound words: ঝকঝক ↔ ピカピカ",
+        "caveat": "Similarity of the pattern only. Meanings must be learned individually."
+      }
+    ]
+  },
+  "pronunciation_focus": {
+    "status": "These are reviewer-reported field observations, labelled as teaching hypotheses until validated with recordings from Bangla-speaking learners rated by qualified Japanese speakers. Contrasts use familiar minimal or near-minimal pairs supported by pictures and context.",
+    "targets": [
+      "ざ/ず/ぜ/ぞ vs じゃ/じ/じゅ/じぇ/じょ",
+      "つ vs す vs ちゅ",
+      "ふ without lip-biting f",
+      "Clean tap ら行 (not l, not a heavy rolled r)",
+      "Final ん without an added vowel or ng (にほん, not にほの)",
+      "Long vowels (おばさん vs おばあさん)",
+      "Sokuon っ (きって/きて, いっかい/いかい)"
+    ]
+  },
+  "speaking_and_ai_feedback": {
+    "modes": [
+      "Graded speak/fix scenes",
+      "Ungraded 'AI friend' free-practice mode: playful, with emojis and no score ever shown. Feedback such as 'Good try! Listen again and repeat.'"
+    ],
+    "tone": "Encouraging and constructive feedback that never shames mistakes.",
+    "learner_disclaimer": "Shown in AI friend mode: 'This robot is still learning Bangla accents. It does not grade you here. Your certificate recordings are checked separately against a clear rubric.'",
+    "safeguards": [
+      "Score only features the system can measure credibly, such as task completion and target words detected.",
+      "Show uncertainty in feedback. Unlimited retries.",
+      "Always offer model audio and self-comparison.",
+      "Web Speech or speech-to-text output is not treated as a reliable Japanese pronunciation score, and no native-level evaluation is claimed.",
+      "Validate recognition and feedback on Bangla-accented Japanese against native-rated learner samples before any pass/fail labels are used.",
+      "AI practice is optional and never required for course completion."
+    ],
+    "certificate_speaking_review": "There are no live teachers in the default plan. Certificate-required speaking missions are assessed conservatively on task completion and intelligibility using a published rubric: correct phrase for the situation, target words present, and understandable delivery. Pronunciation quality is not certified. Qualified human review is added only if a reviewer pool is contracted. Before launch, that option must specify the reviewers, turnaround time, rubric, privacy and retention policy, appeal process, capacity, and cost."
+  },
+  "assessment": {
+    "components": [
+      "Ungraded entry diagnostic",
+      "Lesson exit checks (boss quiz)",
+      "Cumulative review micro-units in lessons 5, 10, 15, 20, 25, and 29",
+      "Separate JFT-style and JLPT N5-style section tests",
+      "Final practice mocks under realistic timing"
+    ],
+    "mock_tests": {
+      "jft_basic_style": "3 full-length style-practice mocks in a computer-based interface simulation built from the existing interactive widgets, with an approximately 60-minute timer and audio playable at most twice. VERIFY section structure, timing, and audio rules against current official Japan Foundation and Prometric sources.",
+      "jlpt_n5_style": "2 full-length style-practice mocks following the current official section structure. VERIFY with official JLPT sources. Japanese-only, matching the real exam.",
+      "reporting": "Results are reported as raw percent correct, section mastery, timing, and confidence bands. Results are never converted to an official JFT 10–250 score or a JLPT scaled score. All interfaces are labelled 'style practice'. Only independently written or properly licensed items are used, and runtime AI is not used for scored items."
+    },
+    "pass_rules": "Before enrolment opens, publish versioned thresholds covering boss-quiz pass scores, cumulative-review thresholds, speaking-rubric dimensions, minimum evidence, and remediation steps. Two documents are issued separately. (1) A clearly labelled completion certificate requires all boss quizzes passed at the published threshold, required speaking missions meeting the task/intelligibility rubric, and both final mocks attempted. (2) A competency report lists only competencies where defined mastery thresholds were met. Section thresholds are recalibrated after the pilot under a new version number.",
+    "retakes": "Unlimited retakes of quizzes. Mocks have alternate forms to limit memorisation.",
+    "labeling": "All internal scores are practice estimates, not official JLPT or JFT-Basic results, and do not indicate employment or visa outcomes."
+  },
+  "coverage_matrix": {
+    "description": "Each lesson is tagged to JFT-Basic Can-do contexts (Irodori A1/A2 where applicable) and JFT section types, and separately to JLPT N5 skill areas. Third-party scope estimates are labelled as estimates.",
+    "grammar_function_matrix": "A published matrix, based on reputable pedagogical references, maps beginner functions to lessons. No official grammar list is claimed. Questions/possession L10; particles L13; frequency L12; negative past and sequence L14; adjective tense L15; counters/existence L16; requests L18; reasons (から) L21; permission/prohibition/progressive L26; invitations, preferences, and comparison L27. Any gap not covered is either added through the JLPT exam-extension track or removed from the JLPT promise. Unseen reading and listening tasks are included, not only phrase production.",
+    "jft_test_strategy": "VERIFY whether the JFT-Basic 'Your Language' option includes Bangla. One reviewer reports it does. Until confirmed, teach strategy for both an English option and a possible Bangla option. JLPT has no Bangla support."
+  },
+  "retention_plan": {
+    "spacing": "Each target item (kana, vocabulary, grammar, kanji, listening pattern) recurs after 1 lesson, 3 lessons, and 7+ lessons, and again in the cumulative reviews.",
+    "recurrence_map": "A per-item table is generated at production from the inventory. Production fails if any target misses a required recurrence.",
+    "cumulative_reviews": "Dedicated cumulative-review micro-units in lessons 5, 10, 15, 20, 25, and 29, each with a published measurable threshold on unseen items.",
+    "recall_rule": "Every recall prompt includes a hold gap before the answer appears.",
+    "context_reuse": "Items reappear in new situations, for example numbers in prices (lesson 8), then shifts (lesson 9), then forms (lesson 25)."
+  },
+  "mobile_and_accessibility": {
+    "video": "Compressed low-resolution renders (e.g., 360p/480p options) with an audio-only option. Each download shows its file size.",
+    "offline": "Downloadable low-data lesson bundles, audio-only packages, and offline PDF worksheets. Resumable playback. Offline content can be deleted after completion. Tested on low-end devices with limited storage.",
+    "captions": "Readable Bangla and Japanese captions with kana karaoke, meeting defined contrast and minimum font-size criteria and tested on small screens.",
+    "mic_alternatives": "Tap-based alternatives for every microphone task. Tap alternatives count for participation and progress but do not count as speaking evidence for the certificate.",
+    "no_ai_dependency": "Core lessons and exam practice work without runtime AI."
+  },
+  "motivation_and_community": {
+    "features": [
+      "XP (tied to demonstrated work), badges, and streaks",
+      "Opt-in leaderboard",
+      "A moderated community board where learners share mission outputs and cheer each other"
+    ],
+    "success_stories": "Real stories of Bangladeshi learners, shared only with consent and verified. Stories are not used to imply guaranteed outcomes."
+  },
+  "pricing": {
+    "price_range": "৳300–1,500",
+    "free_preview": "The first 20% of the course is free.",
+    "exam_fee_note": "The JFT-Basic Prometric fee of about ৳3,800 is shown with a date stamp and must be VERIFIED. Mocks are positioned to reduce wasted exam attempts. No pass guarantee is offered."
+  },
+  "certificate": {
+    "scope": "A QR completion certificate verifies course completion. A separate competency report lists only competencies that met published mastery thresholds. Pronunciation quality is not certified.",
+    "not": "It is not a JLPT or JFT-Basic certificate, not a government-recognised credential, not an SSW qualification, and not proof of job placement."
+  },
+  "accuracy_review": {
+    "process": "Every Japanese line is reviewed by a native Japanese reviewer, then given an independent second accuracy check (a second qualified reviewer or a second-model review), before voicing.",
+    "secrets": "Each secret requires a source or an explicit linguistic reason in its structured field. Unverified claims are labelled as hypotheses or removed.",
+    "high_risk_content": "Food/halal guidance (lesson 17) is reviewed for both Japanese accuracy and Muslim learner safety. The lesson states clearly that ingredient reading and asking staff cannot certify halal status, and that staff may not know the answer. It directs learners to verified certification or manufacturer information. Safety, clinic, and housing lessons are reviewed for clear limits and emergency escalation."
+  },
+  "research_verification_gaps": {
+    "items": [
+      "Bangla availability in the JFT-Basic interface",
+      "Current JFT-Basic format, audio rules, and the reported August 2026 update (A1 at 145+, A2.1 at 175+, A2.2 at 200+) and its link to the Employment for Skill Development track",
+      "Official JLPT N5 scope, section structure, and pass rules",
+      "Bangladesh test schedules and fees",
+      "SSW language requirements by field",
+      "Market data and competitor gaps",
+      "Bangla-speaker error patterns"
+    ],
+    "publication_rule": "Each unresolved claim is a hard publication blocker in the CMS. Each verified claim records source URL, retrieval date, reviewer, effective date, and expiry/recheck date. Any claim that cannot be confirmed from a current primary source is removed or labelled."
+  },
+  "production": {
+    "budget_estimate": "Basis: one 5–10-minute main video per lesson. Micro-units are LMS activities reusing existing audio, widgets, and worksheets. At about 2,500 ElevenLabs characters per 5 minutes, 30 main videos need about 75,000–150,000 characters. That is about 1–2 Creator-plan months at $22/month ($22–$44). Adding lesson text ($0.30–$2.10) and images ($0–$1.20) gives a provisional direct cost of about $22.30–$47.30. Before approval, confirm whether native Japanese audio uses the same allowance, and include any separate voice or licensing costs. Any new voiced audio for micro-units is added after pilot measurement. For comparison, voicing a full 40–55-minute video per lesson would need about 600,000–825,000 characters (≈5–6 Creator months, about $110.30–$135.30 direct); that scope is not adopted. GitHub Actions rendering is free. Use Remotion animation and reusable assets; avoid Veo ($0.30 per clip) unless essential.",
+    "labor_estimate": "Planning estimate only, not a priced labour quote: about 43–75 person-days. This covers 30–50 producer-days for 30 lesson packages, 8–15 reviewer-days, and 5–10 days for mock tests and integration. A small team should plan roughly 9–15 weeks, depending on reviewer availability. Record actual effort on the pilot and reforecast.",
+    "mock_test_workstream": "A separate workstream for item writing, native review, and alternate forms across 5 full-length mocks. It is estimated after piloting one section. It reuses existing quiz and listening widgets and caches shared instructions and feedback.",
+    "runtime_ai": "Shown separately from fixed production costs. About $0.001 per learner answer; forecast as answers × learners × $0.001. Set per-learner usage limits and cache reusable explanations. AI practice is optional.",
+    "schedule": "Pilot one complete lesson (main video + all micro-units). Measure actual voiced characters (Tanvir narration and Japanese audio separately), render time, storage, review time, and staff effort. Check stills and audio sync, recalculate the budget, then batch the remaining lessons. Do not commit to a launch date before pilot data exists.",
+    "quality_gate_per_lesson": [
+      "Native-audio ownership recorded",
+      "Pronunciation timing check",
+      "Subtitle and kana-karaoke validation",
+      "Small-screen layout test",
+      "Mouth-sync review",
+      "Clean final frame",
+      "lesson_check.py pass (output stored)",
+      "Human-review status stored (Japanese accuracy, cultural nuance, mobile layout, audio, assessment validity)",
+      "Recurrence-table check pass",
+      "Still inspection",
+      "Documented MP4 spot-check"
+    ]
+  },
+  "sources_required": [
+    "Japan Foundation JFT-Basic official site",
+    "Prometric JFT-Basic Bangladesh page",
+    "Official JLPT site",
+    "Immigration Services Agency of Japan (SSW)",
+    "Irodori Can-do statements",
+    "Embassy of Bangladesh in Tokyo (date-stamped)"
+  ]
+}

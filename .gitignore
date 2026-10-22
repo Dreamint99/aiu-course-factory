@@ -1,0 +1,5 @@
+work/
+output/
+public/japanese/
+__pycache__/
+.env
