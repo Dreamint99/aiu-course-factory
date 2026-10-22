@@ -38,7 +38,8 @@ def save(st):
 def commit(msg):
     if os.environ.get("CI") != "true":
         return
-    run("git", "add", "src/japanese/specs", "src/japanese/factory.json", "src/japanese/claude_spend.json", check=False)
+    paths = [p for p in ("src/japanese/specs", "src/japanese/factory.json", "src/japanese/claude_spend.json") if (ROOT / p).exists()]
+    run("git", "add", *paths, check=False)  # a missing path would make git add stage nothing at all
     run("git", "-c", "user.email=factory@aiuniversitybd.com", "-c", "user.name=AIU course factory", "commit", "-q", "-m", msg, check=False)
     run("git", "pull", "-q", "--rebase", check=False); run("git", "push", "-q", check=False)
 
