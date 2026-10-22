@@ -41,6 +41,22 @@ KEY = E["ELEVENLABS_API_KEY"]
 TEACHER_VIA = os.environ.get("JP_TEACHER", "openrouter")
 
 
+NATIVE_VIA = os.environ.get("JP_NATIVE", "openrouter")  # owner 2026-10-22: ElevenLabs through OpenRouter (pay per use) for native lines too
+SMALL, SILENT = set("ゃゅょぁぃぅぇぉャュョァィゥェォ"), set("、。！？!?・ 　「」")
+
+
+def mora_starts(text, amp):
+    """Start frame of every character when no TTS timestamps exist: spread the morae evenly over the voiced part of the
+    loudness envelope (Japanese is mora-timed, so this tracks speech well). Small kana are short, punctuation takes no time."""
+    voiced = [i for i, c in enumerate(amp) if c != "0"]
+    a, b = (voiced[0], voiced[-1] + 1) if voiced else (0, max(1, len(amp)))
+    w = [0.0 if c in SILENT else 0.35 if c in SMALL else 1.0 for c in text]
+    tot = sum(w) or 1; out, acc = [], 0.0
+    for x in w:
+        out.append(round(a + (b - a) * acc / tot)); acc += x
+    return out
+
+
 def or_tts(text, voice, cache):
     out = cache / (hashlib.sha1(f"or|{voice}|{text}".encode()).hexdigest()[:16] + ".mp3")
     if out.exists() and out.stat().st_size > 2000:
@@ -111,8 +127,11 @@ def main():
                 prev_t = b["t"]; chars += len(b["t"])
                 run("-i", str(raw), "-ac", "1", "-ar", "44100", "-af", "loudnorm=I=-15:TP=-1.5", "-b:a", "160k", str(pub / name))
             elif "j" in b:
-                raw, ts = tts(b["j"], cast[b["who"]]["voice"], "ja", cache); chars += len(b["j"])
-                k = 0.75 if b.get("slow") else 1.0
+                k = 0.75 if b.get("slow") else 1.0; chars += len(b["j"])
+                if NATIVE_VIA == "openrouter":  # pay-per-use, no plan quota; no timestamps → estimated from the loudness below
+                    raw, ts = or_tts(b["j"], cast[b["who"]]["voice"], cache), None
+                else:
+                    raw, ts = tts(b["j"], cast[b["who"]]["voice"], "ja", cache)
                 af = (f"atempo={k}," if k != 1 else "") + "loudnorm=I=-14:TP=-1.5"
                 run("-i", str(raw), "-ac", "1", "-ar", "44100", "-af", af, "-b:a", "160k", str(pub / name))
                 if ts and ts["s"]:  # frame (inside the line) at which each character of the text starts
@@ -120,6 +139,8 @@ def main():
             else:
                 continue
             b["file"] = f"vo/{name}"; b["frames"] = math.ceil(dur(pub / name) * FPS) + 2; b["amp"] = envelope(pub / name)
+            if "j" in b and "cs" not in b:
+                b["cs"] = mora_starts(b["j"], b["amp"]); b["cc"] = b["j"]
         # timeline
         t = LEAD; beats = s["beats"]
         for bi, b in enumerate(beats):
