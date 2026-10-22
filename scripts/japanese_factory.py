@@ -10,7 +10,7 @@ Per lesson n (jpw-NN), in order, skipping lessons already in src/japanese/factor
 A failing lesson is recorded (tries++) and skipped after 3 tries; later lessons still run. Spend is printed per lesson.
 In CI (env CI=true) every finished lesson is committed and pushed at once, so a timeout never loses work.
 """
-import argparse, json, os, subprocess, sys, time
+import argparse, json, os, re, subprocess, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -48,7 +48,13 @@ def main():
     sys.stdout.reconfigure(encoding="utf-8")
     a = argparse.ArgumentParser(); a.add_argument("--max", type=int, default=4); a.add_argument("--only", default=""); a.add_argument("--upload", action="store_true")
     a = a.parse_args()
-    st = load(); todo = [int(x) for x in a.only.split(",") if x] or [n for n in range(1, TOTAL + 1) if n not in st["done"]]
+    st = load()
+    if a.upload:  # the videos already in the private release are the truth (parallel runs can lose factory.json commits)
+        repo = os.environ.get("FACTORY_REPO", "Dreamint99/aiu-course-videos")
+        r = run("gh", "release", "view", "japanese-course", "-R", repo, "--json", "assets", "-q", ".assets[].name", check=False)
+        have = {int(m) for m in re.findall(r"jpw-(\d+)\.mp4", r.stdout or "")}
+        st["done"] = sorted(set(st["done"]) | have)
+    todo = [int(x) for x in a.only.split(",") if x and int(x) not in st["done"]] or ([] if a.only else [n for n in range(1, TOTAL + 1) if n not in st["done"]])
     todo = [n for n in todo if st["failed"].get(str(n), 0) < 3][: a.max]
     print(f"factory: {len(st['done'])}/{TOTAL} done, this run: {todo}", flush=True)
     for n in todo:
