@@ -40,7 +40,7 @@ def log(*a):
 def _openrouter(model, system, user, max_tokens, json_mode):
     body = {"model": model, "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
             "max_tokens": max_tokens, "temperature": 0.4}
-    if json_mode:
+    if json_mode and not model.endswith(":free"):  # many free models reject response_format; the parser extracts the JSON anyway
         body["response_format"] = {"type": "json_object"}
     for t in range(3):
         r = requests.post("https://openrouter.ai/api/v1/chat/completions", timeout=900, json=body,
@@ -89,6 +89,13 @@ def _parse(text):
     try:
         return json.loads(raw)
     except ValueError:
+        try:
+            import json_repair  # noqa: PLC0415  (pip json-repair; optional) — free local repair first
+            out = json_repair.loads(raw)
+            if isinstance(out, dict) and len(json.dumps(out)) > 40:
+                log("    · JSON repaired locally"); return out
+        except Exception:  # noqa: BLE001
+            pass
         fixed = _openrouter("openai/gpt-6-luna", "Fix this broken JSON. Keep every value exactly; only repair syntax. Return the JSON only.", raw, 32000, True)
         log("    · JSON repaired"); return json.loads(re.search(r"\{.*\}", fixed, re.S).group(0))
 
