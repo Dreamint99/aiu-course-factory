@@ -53,7 +53,8 @@ def main():
         repo = os.environ.get("FACTORY_REPO", "Dreamint99/aiu-course-videos")
         r = run("gh", "release", "view", "japanese-course", "-R", repo, "--json", "assets", "-q", ".assets[].name", check=False)
         have = {int(m) for m in re.findall(r"jpw-(\d+)\.mp4", r.stdout or "")}
-        st["done"] = sorted(set(st["done"]) | have)
+        have = {n for n in have if (ROOT / f"src/japanese/specs/jpw-{n:02d}.json").exists()}  # a video without its spec (lost in a parallel run) is made again
+        st["done"] = sorted((set(st["done"]) & have) | have)
     todo = [int(x) for x in a.only.split(",") if x and int(x) not in st["done"]] or ([] if a.only else [n for n in range(1, TOTAL + 1) if n not in st["done"]])
     todo = [n for n in todo if st["failed"].get(str(n), 0) < 3][: a.max]
     print(f"factory: {len(st['done'])}/{TOTAL} done, this run: {todo}", flush=True)
