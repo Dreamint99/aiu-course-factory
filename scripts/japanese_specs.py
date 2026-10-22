@@ -10,7 +10,7 @@
 3. Japanese accuracy review by a second model (GPT-5.6): find/replace fixes for wrong Japanese, romaji, politeness or meaning.
 Cost ≈ $0.08–0.15 per lesson. Never overwrites an existing spec unless --force.
 """
-import json, re, subprocess, sys
+import json, os, re, subprocess, sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -19,8 +19,9 @@ from ai_router import ask_json, log, SPENT  # noqa: E402
 ROOT = Path(__file__).resolve().parents[1]
 COURSE = ROOT / "src/japanese/course"
 SPECS = ROOT / "src/japanese/specs"
-WRITER = ["or:google/gemini-4-argon", "claude:claude-sonnet-5-5", "or:openai/gpt-5.6-sol"]
-REVIEWER = ["or:google/gemini-4-argon", "or:deepseek/deepseek-v4-pro", "claude:claude-sonnet-5-5"]  # owner 2026-10-22: cheaper than GPT-5.6 (≈$0.03 vs $0.13)
+# owner 2026-10-22: text work on FREE OpenRouter models first, paid only for serious steps (accuracy review); voices on OpenRouter
+WRITER = os.environ.get("SPEC_WRITER", "or:nvidia/nemotron-3-ultra-550b-a55b:free,or:google/gemma-4-31b-it:free,claude:claude-haiku-5-5,claude:claude-sonnet-5-5").split(",")
+REVIEWER = os.environ.get("SPEC_REVIEWER", "claude:claude-sonnet-5-5,or:google/gemini-4-argon").split(",")  # accuracy = serious → paid
 BN = "০১২৩৪৫৬৭৮৯"
 CAST = {
     "F": {"name": "ユイ", "bn": "ইউই", "voice": "vsOHlw2syHreLeo0GXA1", "look": "yui", "role": "সহকর্মী"},
@@ -216,17 +217,15 @@ def main():
                   "find is an exact substring of the JSON text below (keep it short but unique) and replace is the corrected text. Empty fixes if all correct.\n\n" +
                   json.dumps(spec, ensure_ascii=False), max_tokens=12000)
     txt = json.dumps(spec, ensure_ascii=False); applied = 0
-    for fx in rv.get("fixes", []):
+    for fx in rv.get("fixes", []):  # one at a time: a fix that breaks the JSON or the schema is skipped, the rest still land
         if fx.get("find") and fx["find"] in txt and fx.get("replace") is not None:
-            txt = txt.replace(fx["find"], fx["replace"], 1); applied += 1
-    try:
-        spec2 = json.loads(txt)
-        if not validate(spec2, n):
-            spec = spec2
-        else:
-            log("  ! review fixes broke the spec — kept the unreviewed version")
-    except ValueError:
-        log("  ! review fixes broke the JSON — kept the unreviewed version")
+            t2 = txt.replace(fx["find"], fx["replace"], 1)
+            try:
+                if not validate(json.loads(t2), n):
+                    txt = t2; applied += 1
+            except ValueError:
+                pass
+    spec = json.loads(txt)
     spec["review"] = {"applied": applied, "notes": [f.get("why") for f in rv.get("fixes", [])][:20]}
     out.write_text(json.dumps(spec, ensure_ascii=False, indent=2), encoding="utf-8")
     chk = subprocess.run([sys.executable, str(ROOT / "scripts/lesson_check.py"), str(out), "--lesson-no", str(n)], capture_output=True, text=True, encoding="utf-8")
