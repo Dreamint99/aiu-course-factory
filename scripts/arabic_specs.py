@@ -12,7 +12,7 @@ Same pipeline as scripts/japanese_specs.py (copied 2026-10-22, Japanese files un
    MSA/Egyptian), transliteration, Bangla pronunciation, meaning, politeness/culture. Then scripts/lesson_check.py (Global Class Rules).
 Cost ≈ $0.08–0.15 per lesson (OpenRouter). Never overwrites an existing spec unless --force.
 """
-import json, re, subprocess, sys
+import json, os, re, subprocess, sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -21,8 +21,8 @@ from ai_router import ask_json, log, SPENT  # noqa: E402
 ROOT = Path(__file__).resolve().parents[1]
 COURSE = ROOT / "src/arabic/course"
 SPECS = ROOT / "src/arabic/specs"
-WRITER = ["or:google/gemini-4-argon", "or:openai/gpt-5.6-sol", "claude:claude-sonnet-5-5"]
-REVIEWER = ["or:openai/gpt-5.6-sol", "or:google/gemini-4-argon", "claude:claude-sonnet-5-5"]
+WRITER = os.environ.get("SPEC_WRITER", "or:google/gemma-4-31b-it:free,claude:claude-haiku-5-5,claude:claude-sonnet-5-5").split(",")
+REVIEWER = os.environ.get("SPEC_REVIEWER", "claude:claude-sonnet-5-5,claude:claude-haiku-5-5,or:google/gemini-4-argon").split(",")  # owner: accuracy = serious → paid (Claude); drafts on free models
 BN = "০১২৩৪৫৬৭৮৯"
 # voices: all Saudi-accent ElevenLabs library voices (no Qatari-labelled voice exists in the library; Saudi/Qatari khaleeji are close)
 CAST = {
@@ -100,6 +100,8 @@ def earlier(n):
     out = []
     for i in range(1, n):
         p = SPECS / f"arw-{i:02d}.json"
+        if i == 1 and not p.exists():
+            p = SPECS / "ar-01-first-words-v2.json"  # lesson 1 = hand-checked pilot (older schema), live as arw-01
         if p.exists():
             s = json.loads(p.read_text(encoding="utf-8"))
             js = sorted({f"{b['j']} ({b.get('bro', '')} = {b.get('bn', '')})" for sc in s["scenes"] for b in sc.get("beats", [])
@@ -116,7 +118,19 @@ def flat(t):
     return re.sub(PUNCT, "", t or "")
 
 
+def tidy(spec):
+    """Mechanical fixes before validation: Arabic script inside a Bangla teacher line in brackets "(أبغى)" is dropped (the Bangla letters
+    next to it already say it), stray spaces trimmed."""
+    for sc in spec.get("scenes", []):
+        for b in sc.get("beats", []):
+            if b.get("t") and AR.search(b["t"]):
+                t = re.sub(r"\s*[(\[«\"'“]\s*[؀-ۿً-ْ\s،؟]+[)\]»\"'”]", "", b["t"])
+                b["t"] = re.sub(r"\s{2,}", " ", t).strip()
+    return spec
+
+
 def validate(spec, n):
+    tidy(spec)
     err = []
     sc = spec.get("scenes", []); types = [s.get("type") for s in sc]
     must = ["hook", "title"] + (["recall"] if n > 1 else []) + ["learn", "speak", "grammar", "secret", "fix", "context", "roleplay", "mission", "reward"]
@@ -213,7 +227,7 @@ def validate(spec, n):
 def rules_of(design):
     keep = {}
     for k, v in design.items():
-        if any(w in k.lower() for w in ("dialect", "bridge", "pronunc", "culture", "polite", "script", "language", "honest", "safety", "style")):
+        if any(w in k.lower() for w in ("dialect", "bridge", "pronunc", "culture", "polite", "script", "language", "honest", "safety", "style", "secret", "promise", "outcome")):
             keep[k] = v
     return json.dumps(keep, ensure_ascii=False)[:7000]
 
@@ -227,7 +241,8 @@ def main():
     design = json.loads((COURSE / "design.json").read_text(encoding="utf-8"))
     seq = {int(x.get("n") or x.get("no") or i + 1): x for i, x in enumerate(design["lesson_sequence"])}; row = seq[n]
     nxt = seq.get(n + 1, {"title": "কোর্স শেষ"})
-    ex_path = SPECS / "arw-01.json" if n > 1 and (SPECS / "arw-01.json").exists() else ROOT / "src/japanese/specs/jpw-01.json"
+    made = [p for p in sorted(SPECS.glob("arw-*.json")) if not p.name.endswith(".failed.json") and p.name != f"arw-{n:02d}.json"]
+    ex_path = made[0] if made else ROOT / "src/japanese/specs/jpw-01.json"  # first factory-made Arabic lesson (same schema), else the Japanese one
     example = strip_timing(json.loads(ex_path.read_text(encoding="utf-8")))
     ex_note = "an earlier Arabic lesson of THIS course" if "arw" in ex_path.name else \
         "a lesson of our JAPANESE course — copy only its field shapes, tone and scene flow; every native line must be Gulf Arabic with ro + bro"
@@ -240,7 +255,7 @@ def main():
             f"course \"আরবি ভাষা · গালফের কথ্য আরবি\".\n\nSTYLE EXAMPLE ({ex_note}; follow its tone and field shapes, NOT its content):\n"
             f"{json.dumps(example, ensure_ascii=False)[:14000]}\n\nWrite the full spec JSON for lesson {n}.")
     spec = ask_json(WRITER, sys_p, user, max_tokens=32000); spec["cast"] = CAST; spec["id"] = f"arw-{n:02d}"
-    for attempt in range(2):
+    for attempt in range(3):
         errs = validate(spec, n)
         if not errs:
             break

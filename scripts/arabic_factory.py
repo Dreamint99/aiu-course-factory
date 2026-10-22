@@ -10,7 +10,7 @@ Per lesson n (arw-NN), in order, skipping lessons already in src/arabic/factory.
 A failing lesson is recorded (tries++) and skipped after 3 tries; later lessons still run. Spend is printed per lesson.
 In CI (env CI=true) every finished lesson is committed and pushed at once, so a timeout never loses work.
 """
-import argparse, json, os, subprocess, sys, time
+import argparse, json, os, re, subprocess, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,7 +28,7 @@ def run(*cmd, check=True):
 
 
 def load():
-    return json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {"done": [], "failed": {}}
+    return json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {"done": [1], "failed": {}}  # lesson 1 = the hand-checked pilot (ar-01-first-words-v2), already live as arw-01
 
 
 def save(st):
@@ -38,22 +38,31 @@ def save(st):
 def commit(msg):
     if os.environ.get("CI") != "true":
         return
-    run("git", "add", "src/arabic/specs", "src/arabic/factory.json", "src/arabic/claude_spend.json", check=False)
+    paths = [p for p in ("src/arabic/specs", "src/arabic/factory.json", "src/arabic/claude_spend.json") if (ROOT / p).exists()]
+    run("git", "add", *paths, check=False)  # a missing path would make git add stage nothing at all
     run("git", "-c", "user.email=factory@aiuniversitybd.com", "-c", "user.name=AIU course factory", "commit", "-q", "-m", msg, check=False)
     run("git", "pull", "-q", "--rebase", check=False); run("git", "push", "-q", check=False)
 
 
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
-    a = argparse.ArgumentParser(); a.add_argument("--max", type=int, default=4); a.add_argument("--only", default=""); a.add_argument("--upload", action="store_true")
+    a = argparse.ArgumentParser(); a.add_argument("--max", type=int, default=4); a.add_argument("--only", default=""); a.add_argument("--upload", action="store_true"); a.add_argument("--specs-only", action="store_true")
     a = a.parse_args()
-    st = load(); todo = [int(x) for x in a.only.split(",") if x] or [n for n in range(1, TOTAL + 1) if n not in st["done"]]
+    st = load()
+    if a.upload:  # the videos already in the private release are the truth (parallel runs can lose factory.json commits)
+        repo = os.environ.get("FACTORY_REPO", "Dreamint99/aiu-course-videos")
+        r = run("gh", "release", "view", "arabic-course", "-R", repo, "--json", "assets", "-q", ".assets[].name", check=False)
+        have = {int(m) for m in re.findall(r"arw-(\d+)\.mp4", r.stdout or "")}
+        st["done"] = sorted(set(st["done"]) | have)
+    todo = [int(x) for x in a.only.split(",") if x and int(x) not in st["done"]] or ([] if a.only else [n for n in range(1, TOTAL + 1) if n not in st["done"]])
     todo = [n for n in todo if st["failed"].get(str(n), 0) < 3][: a.max]
     print(f"factory: {len(st['done'])}/{TOTAL} done, this run: {todo}", flush=True)
     for n in todo:
         lid = f"arw-{n:02d}"; t0 = time.time()
         try:
             run(sys.executable, "scripts/arabic_specs.py", str(n))
+            if a.specs_only:  # write every spec now (free/cheap text models); voices + renders later when TTS credit is there
+                print(f"✓ {lid} spec ready", flush=True); continue
             run(sys.executable, "scripts/arabic_make.py", f"src/arabic/specs/{lid}.json")
             run(sys.executable, "scripts/lesson_check.py", f"src/arabic/specs/{lid}.json", "--lesson-no", str(n))
             run(sys.executable, "scripts/arabic_cloud.py", lid, "--chunks", "8")
