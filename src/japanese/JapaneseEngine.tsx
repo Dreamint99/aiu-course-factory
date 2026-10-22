@@ -802,7 +802,6 @@ export const JapaneseVideo: React.FC<{ spec: Spec }> = ({ spec }) => {
   const f = useCurrentFrame();
   const starts = spec.scenes.reduce<number[]>((a, _, i) => [...a, i ? a[i - 1] + spec.scenes[i - 1].len : 10], []);
   const total = jpLen(spec); const sb = subs(spec, starts); const cur = sb.find((x) => f >= x.from && f < x.to + 4);
-  const speech = (fr: number) => spec.scenes.some((s, i) => s.beats.some((b) => (b.t || b.j) && fr >= starts[i] + b.a - 4 && fr < starts[i] + b.b + 4));
   return (
     <AbsoluteFill style={{ background: C.bg0 }}>
       <Studio />
@@ -820,7 +819,7 @@ export const JapaneseVideo: React.FC<{ spec: Spec }> = ({ spec }) => {
       <Header spec={spec} starts={starts} />
       <Badge spec={spec} starts={starts} />
       {cur && <div style={{ position: "absolute", left: 440, right: 140, bottom: 40, display: "flex", justifyContent: "center", opacity: interpolate(f, [cur.from, cur.from + 5, cur.to, cur.to + 4], [0, 1, 1, 0], clamp) }}><div style={{ maxWidth: 1300, padding: "10px 28px 14px", borderRadius: 16, background: "rgba(8,11,36,.84)", border: `1px solid ${C.line}`, fontFamily: BN, fontSize: 36, fontWeight: 500, color: "#fff", textAlign: "center", lineHeight: 1.35 }}>{cur.s.replace(/[।,]$/, "")}</div></div>}
-      <Audio src={staticFile("aiu2/music.mp3")} volume={(fr) => (speech(fr) ? 0.045 : 0.13) * interpolate(fr, [0, 30, total - 60, total], [0, 1, 1, 0], clamp)} />
+      <Audio src={staticFile("aiu2/music.mp3")} volume={(fr) => 0.06 * interpolate(fr, [0, 30, total - 60, total], [0, 1, 1, 0], clamp)} />
     </AbsoluteFill>
   );
 };

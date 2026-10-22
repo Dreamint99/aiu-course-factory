@@ -18,7 +18,7 @@ import numpy as np
 import requests
 
 ROOT = Path(__file__).resolve().parents[1]
-FPS, LEAD, TAIL, SP = 30, 12, 16, 8  # = JapaneseEngine.tsx
+FPS, LEAD, TAIL, SP = 30, 6, 8, 3  # tight timing so the teacher sounds continuous (owner 2026-10-22: "ভয়েজ তো টানা বলতাছে না")
 TANVIR = "SamfdZr6Xh6ZtPUGZUhg"
 
 
