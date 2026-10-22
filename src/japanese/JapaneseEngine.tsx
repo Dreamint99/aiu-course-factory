@@ -501,7 +501,7 @@ const SQuiz: React.FC<P> = ({ s }) => {
         <div style={{ flex: 1, height: 22, borderRadius: 11, background: "rgba(255,255,255,.15)", overflow: "hidden" }}><div style={{ width: `${bar * 100}%`, height: "100%", background: `linear-gradient(90deg, ${C.red}, ${C.sun})` }} /></div>
         <div style={{ fontFamily: BN, fontSize: 60, fontWeight: 900, color: C.sun, width: 70, textAlign: "center" }}>{bn(left)}</div>
       </div>}
-      {reveal && <div style={{ position: "absolute", right: 260, top: 300, opacity: interpolate(f, [hold.b, hold.b + 8, hold.b + 50, hold.b + 70], [0, 1, 1, 0], clamp), transform: `translateY(${-interpolate(f, [hold.b, hold.b + 70], [0, 120], clamp)}px)`, fontFamily: EN, fontSize: 80, fontWeight: 900, color: C.sun, textShadow: `0 0 30px ${C.sun}` }}>+10 XP</div>}
+      {reveal && <div style={{ position: "absolute", right: 120, top: 640, opacity: interpolate(f, [hold.b, hold.b + 8, hold.b + 50, hold.b + 70], [0, 1, 1, 0], clamp), transform: `translateY(${-interpolate(f, [hold.b, hold.b + 70], [0, 120], clamp)}px)`, fontFamily: EN, fontSize: 80, fontWeight: 900, color: C.sun, textShadow: `0 0 30px ${C.sun}` }}>+10 XP</div>}
       <Confetti at={hold.b} y={560} />
       <SFX at={hold.b} name="chime" vol={0.35} />
     </AbsoluteFill>
@@ -663,7 +663,7 @@ const SSecret: React.FC<P> = ({ s }) => {
             {pairs.map(([b, j], i) => (
               <Rise key={i} d={t.a + t.frames * (0.2 + i * 0.18)}>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 90px 1fr", alignItems: "center" }}>
-                  <div style={{ padding: "16px 26px", borderRadius: 20, background: "rgba(255,255,255,.1)", fontFamily: BN, fontSize: 40, fontWeight: 700, color: "#fff" }}>🇧🇩 {b}</div>
+                  <div style={{ padding: "16px 26px", borderRadius: 20, background: "rgba(255,255,255,.1)", fontFamily: BN, fontSize: 40, fontWeight: 700, color: "#fff" }}>{b}</div>
                   <div style={{ textAlign: "center", fontFamily: EN, fontSize: 50, fontWeight: 900, color: C.sun }}>=</div>
                   <div style={{ padding: "16px 26px", borderRadius: 20, background: "#fff", fontFamily: MARU, fontSize: 40, color: C.ink }}>{j}</div>
                 </div>

@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 COURSE = ROOT / "src/japanese/course"
 SPECS = ROOT / "src/japanese/specs"
 WRITER = ["or:google/gemini-4-argon", "claude:claude-sonnet-5-5", "or:openai/gpt-5.6-sol"]
-REVIEWER = ["or:openai/gpt-5.6-sol", "claude:claude-sonnet-5-5", "or:google/gemini-4-argon"]
+REVIEWER = ["or:google/gemini-4-argon", "or:deepseek/deepseek-v4-pro", "claude:claude-sonnet-5-5"]  # owner 2026-10-22: cheaper than GPT-5.6 (≈$0.03 vs $0.13)
 BN = "০১২৩৪৫৬৭৮৯"
 CAST = {
     "F": {"name": "ユイ", "bn": "ইউই", "voice": "vsOHlw2syHreLeo0GXA1", "look": "yui", "role": "সহকর্মী"},
