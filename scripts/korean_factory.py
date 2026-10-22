@@ -45,12 +45,17 @@ def save_one(n, done, tries):
 
 
 def commit(msg):
+    """Commit the lesson specs only (state = the release; the state files conflict between parallel runs). Retries pull + push."""
     if os.environ.get("CI") != "true":
         return
-    paths = [p for p in ("src/korean/specs", "src/korean/factory", "src/korean/claude_spend.json") if (ROOT / p).exists()]
-    run("git", "add", *paths, check=False)  # a missing path would make git add stage nothing at all
-    run("git", "-c", "user.email=factory@aiuniversitybd.com", "-c", "user.name=AIU course factory", "commit", "-q", "-m", msg, check=False)
-    run("git", "pull", "-q", "--rebase", check=False); run("git", "push", "-q", check=False)
+    run("git", "add", "src/korean/specs", check=False)
+    run("git", "-c", "user.email=factory@aiuniversitybd.com", "-c", "user.name=AIU course factory", "commit", "-q", "-m", msg, "--", "src/korean/specs", check=False)
+    for _ in range(5):
+        run("git", "checkout", "--", "src/korean/factory.json", "src/korean/claude_spend.json", check=False)
+        run("git", "pull", "-q", "--rebase", "--autostash", check=False)
+        if run("git", "push", "-q", check=False).returncode == 0:
+            return
+        run("git", "rebase", "--abort", check=False); time.sleep(5)
 
 
 def main():
@@ -84,6 +89,7 @@ def main():
                 if run("gh", "release", "view", "korean-course", "-R", repo, check=False).returncode:
                     run("gh", "release", "create", "korean-course", "-R", repo, "-t", "Korean course videos", "-n", "Finished lesson videos (private).")
                 run("gh", "release", "upload", "korean-course", str(mp4), "-R", repo, "--clobber")
+                run("gh", "release", "upload", "korean-course", str(ROOT / f"src/korean/specs/{lid}.json"), "-R", repo, "--clobber", check=False)  # spec next to its video
             st["done"] = sorted(set(st["done"]) | {n}); st["failed"].pop(str(n), None)
             print(f"✓ {lid} in {int(time.time() - t0)}s", flush=True)
         except Exception as e:  # noqa: BLE001
